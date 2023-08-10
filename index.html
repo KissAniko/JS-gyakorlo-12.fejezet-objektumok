@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+
+    <div style = " width: 100px; height: 100px; background-color: rgb(101, 86, 116)"></div>
+    <script>
+
+//---------------------------------------------------- 12. fejezet: OBJEKTUMOK ------------------------------
+//                          https://www.youtube.com/watch?v=JzFeo3dNhZ8&ab_channel=K%C3%B3db%C3%A1zis
+
+// Konzolba beírjuk window és --------> lsd
+
+
+     var window = {
+           console : {
+             log : function(msg){
+                // logs msg
+             }
+        }
+     };
+
+     window.console.log('szia');
+
+     // A window globalis objektum ---> a window elhagyható --->
+
+     console.log('szia');
+
+     //-------------------------------------------------
+
+       // documentum : a http document-umot tudjuk ezzel vezérelni
+
+       // vezérlés: minden egyes element, minden egyes attributumához (pl: width, height, stb) hozzáférésünk van
+
+       // vizsgálat ---> window ---> docuemnt ---> bgcolor (az oldal háttérszínének megváltoztatása): 
+
+       // jobb klikk ---> 'tulajdonság elérési útjának kiválasztása'
+
+      document.bgColor = "blue";
+
+    //----------------------------------------------------------
+
+      // window ---> document ---> all ---> div (a beírt div-en belül keresem ezt, mert ezt akarom megváltoztatni
+      //                                         'style = " width: 100px; height: 100px; background-color: rgb(101, 86, 116)")  ---> 
+      //    ---> attributes ---> style ---> nodeValue 
+
+      // A kismillió attributum közül segít megtalálni a kifejezett érték. Ezután megváltoztatni csak úgy lehet, ha abban a sorban
+      // levőket mindet kiírjuk, még akkor is, ha csak egy dolgot akarunk megváltoztatni, máskülönben nem fog működni.(tapasztalat xd)
+
+      // document.all[6].attributes.style.nodeValue = "width:150px; height:150px; background-color: pink";
+
+
+    //--------------------------------------------------------------
+
+    console.dir(document.all[6]);   //ezzel megkapjuk a teljes JS-s reprezentációját a div-nek  ---> lsd vizsgálat/konzol
+                                    // a felsorolt kulcsok alá be tudunk tenni értékeket, lehet number, string, bármi, még function-t is.
+
+                                    // function-t akkor érdemes bekötni, mikor az adott elementre egy ún eseményre reagáló funkcionalitást 
+                                    // akarunk rákötni. 
+                                    //Példa: az új kockánk akkor jelenjen meg, mikor rákattintottunk.
+                                    
+    document.all[6].onclick = function(){
+    document.all[6].attributes.style.nodeValue = "width:150px; height:150px; background-color: pink"; // az 54-es sort áthelyeztem
+    console.log('ok');
+
+   }
+                                    
+     
+    </script>
+</body>
+</html>
